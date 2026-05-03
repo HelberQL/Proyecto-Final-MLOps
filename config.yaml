@@ -1,0 +1,42 @@
+# =====================================================================
+# Configuracion del Pipeline de ML - Bank Customer Balance Regression
+# =====================================================================
+
+data:
+  # Dataset publico Bank Customer Churn (Kaggle / mirror estable en GitHub).
+  # Se usa como problema de REGRESION: predecir Balance del cliente.
+  url: "https://raw.githubusercontent.com/YBI-Foundation/Dataset/main/Bank%20Churn%20Modelling.csv"
+  raw_path: "data/bank_churn.csv"
+  target: "Balance"
+  # Columnas que no aportan al modelo (identificadores)
+  drop_columns:
+    - "RowNumber"
+    - "CustomerId"
+    - "Surname"
+  # Columnas categoricas a codificar (One-Hot)
+  categorical_columns:
+    - "Geography"
+    - "Gender"
+
+split:
+  test_size: 0.2
+  random_state: 42
+
+model:
+  name: "RandomForestRegressor"
+  params:
+    n_estimators: 200
+    max_depth: 12
+    min_samples_split: 5
+    min_samples_leaf: 2
+    random_state: 42
+    n_jobs: -1
+
+mlflow:
+  experiment_name: "bank-balance-regression"
+  tracking_uri: "file:./mlruns"
+  registered_model_name: "BankBalanceRFRegressor"
+
+artifacts:
+  output_dir: "artifacts"
+  model_filename: "model.pkl"

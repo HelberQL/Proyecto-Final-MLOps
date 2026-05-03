@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Datos crudos / artefactos pesados
+data/*.csv
+!data/.gitkeep
+
+# Modelos serializados
+artifacts/
+*.pkl
+*.joblib
+
+# Sistema
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
