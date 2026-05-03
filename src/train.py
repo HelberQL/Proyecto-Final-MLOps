@@ -24,7 +24,6 @@ from pathlib import Path
 
 import mlflow
 import mlflow.sklearn
-import pandas as pd
 from mlflow.models.signature import infer_signature
 from sklearn.ensemble import RandomForestRegressor
 
